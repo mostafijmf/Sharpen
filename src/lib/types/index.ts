@@ -2,7 +2,7 @@
 declare type CreateUserParams = {
     clerkId: string;
     email: string;
-    username: string | null;
+    username: string;
     firstName: string | null;
     lastName: string | null;
     photo: string;
