@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
@@ -6,7 +5,7 @@ import { Webhook } from "svix";
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 
 export async function POST(req: Request) {
-    const WEBHOOK_SECRET = process.env.CLERK_WEBHOOKS_SECRET;
+    const WEBHOOK_SECRET = process.env.NEXT_PUBLIC_CLERK_WEBHOOKS_SECRET;
     if (!WEBHOOK_SECRET) {
         throw new Error(
             "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
@@ -56,7 +55,6 @@ export async function POST(req: Request) {
     // CREATE
     if (eventType === "user.created") {
         const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
-        console.log(evt);
 
         const user = {
             clerkId: id,

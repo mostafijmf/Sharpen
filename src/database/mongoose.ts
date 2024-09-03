@@ -1,26 +1,29 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 const url = process.env.NEXT_PUBLIC_MONGODB_URL;
 
-interface MongooseConnection {
-    conn: Mongoose | null;
-    promise: Promise<Mongoose> | null;
-}
+type ConnectionObject = {
+    isConnected?: number;
+};
 
-let cached: MongooseConnection = (global as any).mongoose
+const connection: ConnectionObject = {};
 
-if (!cached) {
-    cached = (global as any).mongoose = {
-        conn: null,
-        promise: null
+export const connectToDatabase = async (): Promise<void> => {
+    if (connection.isConnected) { 
+        console.log('Already connected to the database');
+        return;
     }
-}
 
-export const connectToDatabase = async () => {
-    if (!cached.conn) return cached.conn;
+    try {
+        // Attempt to connect to the database
+        const db = await mongoose.connect(url || '', {});
 
-    if (!url) throw new Error("Missing Mongodb url");
-    cached.promise = cached.promise || mongoose.connect(url, { dbName: "sharpen", bufferCommands: false })
-    cached.conn = await cached.promise;
-    return cached.conn;
+        connection.isConnected = db.connections[0].readyState;
+
+        console.log('Database connected successfully');
+    } catch (error) {
+        console.error('Database connection failed:', error);
+        // Graceful exit in case of a connection error
+        process.exit(1);
+    }
 };
