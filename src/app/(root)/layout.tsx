@@ -6,7 +6,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <main className="flex">
             <Sidebar />
             <MobileNav />
-            {children}
+            <div className="lg:mt-0 mt-16 w-full lg:max-w-7xl pb-10">{children}</div>
         </main>
     );
 };

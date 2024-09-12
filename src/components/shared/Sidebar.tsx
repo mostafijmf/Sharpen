@@ -9,7 +9,7 @@ import { navLinks } from "@/constants";
 const Sidebar = () => {
     const pathname = usePathname();
     return (
-        <aside className="hidden h-screen w-72 bg-white p-5 border-r lg:flex">
+        <aside className="hidden h-screen w-72 bg-white p-5 border-r lg:flex sticky top-0 left-0">
             <div className="size-full flex flex-col gap-4">
                 <Link href="/" className="flex items-center gap-2 md:py-2 text-primary text-xl uppercase">
                     <Image src="/images/icons/sharpen-logo.png" alt="sharpen" width={30} height={30} quality={100} />
