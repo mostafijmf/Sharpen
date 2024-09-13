@@ -6,7 +6,7 @@ This repository contains the code for an AI-powered SaaS platform that provides 
 Live site: [Click](https://sharpen-img.vercel.app)
 
 ## ✨ Features
----
+
 - **Authentication and Authorization :** Secure user access with registration, login, and route protection.
 - **Image Restoration :** Automatically repair and enhance old or damaged images.
 - **Recoloring :** Easily customize images by replacing objects with desired colors
@@ -16,7 +16,7 @@ Live site: [Click](https://sharpen-img.vercel.app)
 - **Credits System :** Purchase credits for image transformations
 
 ## </> Tech
----
+
 - Next.js
 - TypeScript
 - Clerk
@@ -28,7 +28,7 @@ Live site: [Click](https://sharpen-img.vercel.app)
 
 
 ## 🚀 Getting Started
----
+
 Follow these steps to set up the project locally on your computer.
 
 Make sure you have the following installed on your computer:
